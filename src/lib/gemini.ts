@@ -1,13 +1,13 @@
 import { GoogleGenAI } from '@google/genai';
 
-const apiKey = process.env.GEMINI_API_KEY;
-if (!apiKey) {
-  throw new Error('GEMINI_API_KEY is not configured.');
-}
-
-const ai = new GoogleGenAI({ apiKey });
-
 export async function generateImage(prompt: string): Promise<string> {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) {
+    throw new Error('GEMINI_API_KEY is not configured.');
+  }
+
+  const ai = new GoogleGenAI({ apiKey });
+
   const response = await ai.models.generateContent({
     model: 'gemini-2.0-flash-exp-image-generation',
     contents: prompt,
