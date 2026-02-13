@@ -79,3 +79,7 @@ npm run lint
 npm run build
 npm run start
 ```
+
+## Deployment Runbook
+
+See `DEPLOYMENT.md` for production deployment and smoke-test steps.
