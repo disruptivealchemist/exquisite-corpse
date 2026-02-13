@@ -19,6 +19,14 @@ const EMPTY_SELECTIONS: PromptSelections = {
   artMovement: '',
 };
 
+const INSIGHT_HIGHLIGHT_WORD: Record<CategoryKey, string> = {
+  style: 'style',
+  character: 'subject',
+  accessory: 'accessories',
+  material: 'materials',
+  artMovement: 'art movements',
+};
+
 export default function PromptBuilder({ bodyPart, onSubmit }: PromptBuilderProps) {
   const [selections, setSelections] = useState<PromptSelections>({ ...EMPTY_SELECTIONS });
   const [activeCategory, setActiveCategory] = useState<CategoryKey | null>(null);
@@ -75,7 +83,7 @@ export default function PromptBuilder({ bodyPart, onSubmit }: PromptBuilderProps
       </p>
 
       {!freeformMode ? (
-        <div className="space-y-3 md:space-y-4">
+        <div className="space-y-2 md:space-y-3">
           <div className="bg-[#f4f4f4] rounded-2xl px-5 py-5 md:px-7 md:py-6 shadow-md border border-black/15">
             <p className="text-[1.02rem] md:text-[1.18rem] leading-relaxed text-[#292928]/85 font-body">
               A{' '}
@@ -157,16 +165,14 @@ export default function PromptBuilder({ bodyPart, onSubmit }: PromptBuilderProps
           )}
 
           {previewPrompt && (
-            <div className="space-y-2">
-              {lastSelectedCategory && (
-                <p className="text-base md:text-lg font-bold text-[#f4f4f4] text-center font-display italic">
-                  {SELECTION_INSIGHTS[lastSelectedCategory]}
-                </p>
-              )}
-              <div className="bg-white/10 rounded-xl p-4 text-sm md:text-base text-[#f4f4f4]/90 border border-white/20 font-body">
-                <span className="font-bold text-[#f4f4f4]">Your prompt: </span>
-                {previewPrompt}
-              </div>
+            <div className="bg-white/10 rounded-xl p-4 text-sm md:text-base text-[#f4f4f4]/90 border border-white/20 font-body">
+              <span className="font-bold text-[#f4f4f4]">Your prompt: </span>
+              {lastSelectedCategory
+                ? renderHighlightedInsight(
+                    SELECTION_INSIGHTS[lastSelectedCategory],
+                    INSIGHT_HIGHLIGHT_WORD[lastSelectedCategory]
+                  )
+                : 'Choose a category to see a prompt lesson here.'}
             </div>
           )}
         </div>
@@ -199,6 +205,25 @@ export default function PromptBuilder({ bodyPart, onSubmit }: PromptBuilderProps
         </Button>
       </div>
     </div>
+  );
+}
+
+function renderHighlightedInsight(text: string, highlightWord: string) {
+  const lowered = text.toLowerCase();
+  const target = highlightWord.toLowerCase();
+  const start = lowered.indexOf(target);
+
+  if (start === -1) {
+    return text;
+  }
+
+  const end = start + highlightWord.length;
+  return (
+    <>
+      {text.slice(0, start)}
+      <span className="font-bold text-[#c71f2d]">{text.slice(start, end)}</span>
+      {text.slice(end)}
+    </>
   );
 }
 
