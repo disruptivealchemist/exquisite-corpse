@@ -20,17 +20,17 @@ export const CATEGORIES: Record<CategoryKey, CategoryOption> = {
   accessory: {
     label: 'Accessory',
     options: [
-      'a top hat', 'sunglasses', 'a bow tie', 'a cape',
-      'roller skates', 'boxing gloves', 'a tutu', 'a crown',
-      'headphones', 'a jetpack', 'a scarf', 'cowboy boots',
+      'a top hat', 'sunglasses', 'a monocle', 'a crown',
+      'a beard', 'huge glasses', 'a flat cap', 'headphones',
+      'a bow tie', 'a cape', 'a scarf', 'a jetpack',
     ],
   },
   material: {
     label: 'Material',
     options: [
-      'jelly', 'metal', 'clouds', 'crystals', 'lava',
-      'candy', 'moss', 'ice', 'cardboard', 'marble',
-      'rubber ducks', 'spaghetti',
+      'leather', 'minky', 'holographic', 'metal',
+      'velvet', 'denim', 'sequins', 'fur',
+      'silk', 'knitted wool', 'marble', 'crystals',
     ],
   },
   artMovement: {
@@ -41,6 +41,24 @@ export const CATEGORIES: Record<CategoryKey, CategoryOption> = {
       'Minimalism', 'Bauhaus', 'Impressionism', 'Brutalism',
     ],
   },
+};
+
+export const BODY_PART_ACCESSORIES: Record<BodyPart, string[]> = {
+  head: [
+    'a top hat', 'sunglasses', 'a monocle', 'a crown',
+    'a beard', 'huge glasses', 'a flat cap', 'headphones',
+    'a bow tie', 'a scarf', 'a mohawk', 'hoop earrings',
+  ],
+  body: [
+    'a bow tie', 'a cape', 'a scarf', 'a jetpack',
+    'suspenders', 'a medallion', 'a waistcoat', 'epaulettes',
+    'a utility belt', 'a ruffled collar', 'armour', 'angel wings',
+  ],
+  legs: [
+    'ballet slippers', 'granddad slippers', 'bedazzled boots', 'mountaineer boots',
+    'brown leather cowboy boots', 'roller skates', 'flippers', 'platform shoes',
+    'stripy socks', 'leg warmers', 'knee pads', 'stilettos',
+  ],
 };
 
 export const REQUIRED_CATEGORIES: CategoryKey[] = ['style', 'character'];

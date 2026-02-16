@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { BodyPart, CategoryKey, PromptSelections } from '@/types';
-import { CATEGORIES, REQUIRED_CATEGORIES, BODY_PART_LABELS, LEARNING_TIPS, SELECTION_INSIGHTS, buildPrompt } from '@/lib/prompt-templates';
+import { CATEGORIES, REQUIRED_CATEGORIES, BODY_PART_LABELS, BODY_PART_ACCESSORIES, LEARNING_TIPS, SELECTION_INSIGHTS, buildPrompt } from '@/lib/prompt-templates';
 import Chip from '@/components/ui/Chip';
 import Button from '@/components/ui/Button';
 
@@ -129,7 +129,7 @@ export default function PromptBuilder({ bodyPart, onSubmit }: PromptBuilderProps
                 {CATEGORIES[activeCategory].label}
               </p>
               <div className="flex flex-wrap gap-2 mb-3">
-                {CATEGORIES[activeCategory].options.map((option) => (
+                {(activeCategory === 'accessory' ? BODY_PART_ACCESSORIES[bodyPart] : CATEGORIES[activeCategory].options).map((option) => (
                   <Chip
                     key={option}
                     label={option}
