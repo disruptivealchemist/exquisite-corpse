@@ -74,8 +74,8 @@ export default function PromptBuilder({ bodyPart, onSubmit }: PromptBuilderProps
       <h2 className="text-[2.1rem] md:text-[2.7rem] font-bold text-center mb-1 text-[#f4f4f4] font-display italic">
         Design the {BODY_PART_LABELS[bodyPart]}
       </h2>
-      <p className="text-[1.4rem] md:text-[1.6rem] text-[#f4f4f4]/80 text-center mb-6 font-display italic leading-snug">
-        {tip.tip}
+      <p className="text-[1.4rem] md:text-[1.6rem] text-[#f4f4f4]/80 text-center mb-6 font-display leading-snug">
+        {renderBoldMarkdown(tip.tip)}
       </p>
 
       {!freeformMode ? (
@@ -161,7 +161,7 @@ export default function PromptBuilder({ bodyPart, onSubmit }: PromptBuilderProps
           )}
 
           {lastSelectedCategory && (
-            <div className="mt-4 md:mt-6 bg-white/10 rounded-xl p-4 text-sm md:text-base text-[#f4f4f4]/90 border border-white/20 font-body">
+            <div className="mt-4 md:mt-6 bg-[#c71f2d] rounded-xl px-5 py-4 md:px-6 md:py-5 text-base md:text-lg text-[#f4f4f4] font-display italic text-center">
               {renderHighlightedInsight(
                 SELECTION_INSIGHTS[lastSelectedCategory],
                 INSIGHT_HIGHLIGHT_WORD[lastSelectedCategory]
@@ -201,6 +201,16 @@ export default function PromptBuilder({ bodyPart, onSubmit }: PromptBuilderProps
   );
 }
 
+function renderBoldMarkdown(text: string) {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return parts.map((part, i) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return <span key={i} className="font-bold">{part.slice(2, -2)}</span>;
+    }
+    return part;
+  });
+}
+
 function renderHighlightedInsight(text: string, highlightWord: string) {
   const lowered = text.toLowerCase();
   const target = highlightWord.toLowerCase();
@@ -214,7 +224,7 @@ function renderHighlightedInsight(text: string, highlightWord: string) {
   return (
     <>
       {text.slice(0, start)}
-      <span className="font-bold text-[#c71f2d]">{text.slice(start, end)}</span>
+      <span className="font-bold not-italic">{text.slice(start, end)}</span>
       {text.slice(end)}
     </>
   );

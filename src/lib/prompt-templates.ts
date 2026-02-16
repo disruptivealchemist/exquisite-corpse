@@ -70,17 +70,17 @@ export const BODY_PART_FRAMING: Record<BodyPart, string> = {
 export const LEARNING_TIPS: Record<BodyPart, { title: string; tip: string; skill: string }> = {
   head: {
     title: "Prompt Skill: Subject & Style",
-    tip: "Pick WHAT you want and HOW it should look. These two choices are the foundation of every image prompt.",
+    tip: "Pick **WHAT** you want and **HOW** it should look. These two choices are the foundation of every image prompt.",
     skill: "Being specific about your subject and visual style is the foundation of every great AI image prompt.",
   },
   body: {
     title: "Prompt Skill: Adding Detail",
-    tip: "Layer in details! The more specific you are, the more unique the result.",
+    tip: "Layer in **details!** The more **specific** you are, the more unique the result.",
     skill: "Adding descriptive details like materials and accessories gives the AI more to work with and makes your images more surprising.",
   },
   legs: {
     title: "Prompt Skill: Art Direction",
-    tip: "Art movements set the entire visual tone in just a couple of words.",
+    tip: "**Art movements** set the entire visual tone in just a couple of words.",
     skill: "Referencing art movements in your prompts is a power move. It sets the entire visual tone in just a few words.",
   },
 };
