@@ -38,7 +38,7 @@ export default function PlayPage() {
   const currentImage = state.images[state.currentPart];
 
   return (
-    <div className="min-h-screen bg-[#292928] text-[#f4f4f4] flex flex-col">
+    <div className="min-h-screen bg-[#161616] text-[#f4f4f4] flex flex-col">
       <main className="w-full max-w-3xl mx-auto px-4 sm:px-6 py-8 md:py-10 flex-1">
         {state.phase !== 'reveal' && (
           <div className="mb-7 md:mb-9 rounded-2xl border border-white/15 bg-black/15 px-3 py-4">

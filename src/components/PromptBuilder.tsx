@@ -67,10 +67,6 @@ export default function PromptBuilder({ bodyPart, onSubmit }: PromptBuilderProps
     }
   };
 
-  const previewPrompt = !freeformMode && (selections.style || selections.character)
-    ? buildPrompt(selections, bodyPart)
-    : null;
-
   const tip = LEARNING_TIPS[bodyPart];
 
   return (
@@ -78,7 +74,7 @@ export default function PromptBuilder({ bodyPart, onSubmit }: PromptBuilderProps
       <h2 className="text-[2.1rem] md:text-[2.7rem] font-bold text-center mb-1 text-[#f4f4f4] font-display italic">
         Design the {BODY_PART_LABELS[bodyPart]}
       </h2>
-      <p className="text-sm md:text-base text-[#f4f4f4]/80 text-center mb-6 font-display italic">
+      <p className="text-[1.4rem] md:text-[1.6rem] text-[#f4f4f4]/80 text-center mb-6 font-display italic leading-snug">
         {tip.tip}
       </p>
 
@@ -164,15 +160,12 @@ export default function PromptBuilder({ bodyPart, onSubmit }: PromptBuilderProps
             </div>
           )}
 
-          {previewPrompt && (
-            <div className="bg-white/10 rounded-xl p-4 text-sm md:text-base text-[#f4f4f4]/90 border border-white/20 font-body">
-              <span className="font-bold text-[#f4f4f4]">Your prompt: </span>
-              {lastSelectedCategory
-                ? renderHighlightedInsight(
-                    SELECTION_INSIGHTS[lastSelectedCategory],
-                    INSIGHT_HIGHLIGHT_WORD[lastSelectedCategory]
-                  )
-                : 'Choose a category to see a prompt lesson here.'}
+          {lastSelectedCategory && (
+            <div className="mt-4 md:mt-6 bg-white/10 rounded-xl p-4 text-sm md:text-base text-[#f4f4f4]/90 border border-white/20 font-body">
+              {renderHighlightedInsight(
+                SELECTION_INSIGHTS[lastSelectedCategory],
+                INSIGHT_HIGHLIGHT_WORD[lastSelectedCategory]
+              )}
             </div>
           )}
         </div>

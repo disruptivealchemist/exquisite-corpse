@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#292928] text-[#f4f4f4] flex flex-col overflow-hidden">
+    <div className="min-h-screen bg-[#161616] text-[#f4f4f4] flex flex-col overflow-hidden">
       <main className="relative flex-1 flex flex-col items-center justify-center px-4 sm:px-6 py-12 md:py-16">
         <Image
           src="/assets/pencil-left.png"

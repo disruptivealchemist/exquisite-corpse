@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
     }
 
     const framing = BODY_PART_FRAMING[bodyPart as BodyPart];
-    const fullPrompt = `${prompt}. ${framing} The image should have clean edges suitable for collaging. Simple background at the cut edges. Do not include any text or watermarks.`;
+    const fullPrompt = `${prompt}. ${framing} The image must have a solid black (#161616) background and clean straight edges suitable for collaging. Do not include any text or watermarks.`;
 
     const imageDataUri = await generateImage(fullPrompt);
 
